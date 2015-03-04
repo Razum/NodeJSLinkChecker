@@ -1,5 +1,80 @@
+@import 'normalize'
+
 body
-  padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
-a
-  color: #00B7FF
+  background #ebeaea
+
+.header
+  height 400px
+  position relative
+  background #a7cfdf /* Old browsers */
+  background -moz-radial-gradient(center, ellipse cover,  #a7cfdf 0%, #23538a 100%) /* FF3.6+ */
+  background -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#a7cfdf), color-stop(100%,#23538a)) /* Chrome,Safari4+ */
+  background -webkit-radial-gradient(center, ellipse cover,  #a7cfdf 0%,#23538a 100%) /* Chrome10+,Safari5.1+ */
+  background -o-radial-gradient(center, ellipse cover,  #a7cfdf 0%,#23538a 100%) /* Opera 12+ */
+  background -ms-radial-gradient(center, ellipse cover,  #a7cfdf 0%,#23538a 100%) /* IE10+ */
+  background radial-gradient(ellipse at center,  #a7cfdf 0%,#23538a 100%) /* W3C */
+  >h1
+    margin 0
+    position absolute
+    top 50%
+    transform translate(-50%, -50%)
+    left 50%
+    text-shadow -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+    color #fff
+    font-size 48px
+
+.content
+  width 70%
+  height 100%
+  margin 0 auto
+  position relative
+  padding 50px 0
+
+
+.input-group
+  clear both
+  left 50%
+  margin-top 150px
+  position absolute
+  transform translateX(-50%)
+  width 610px
+
+.url-input
+  height 50px
+  width 450px
+  border-radius 25px 0 0 25px
+  border 1px solid #ccc
+  padding 0 10px 0 25px
+  font-size 24px
+  line-height 50px
+  float left
+
+.url-btn
+  background #709CBC
+  border 1px solid darken(#709CBC, 30%)
+  border-left none
+  color #fff
+  height 52px
+  line-height 50px
+  font-size 24px
+  border-radius 0 20px 20px 0
+  padding 0 20px
+
+.url-list-table
+  width 100%
+
+.url-list-thead
+  th
+    text-align left
+    padding 15px 10px
+    border-bottom 1px dotted #709CBC
+  .url-th
+    width 50%
+.url-list-body
+  font-size 12px
+  font-family "Courier New"
+  td
+    padding 15px 10px
+  tr:nth-child(2n)
+    background lighten(#709CBC, 80%)
+

@@ -5,10 +5,63 @@
     <link rel='stylesheet' href='/stylesheets/style.css'/>
 </head>
 <body>
-<h1><%= title %></h1>
 
-<p>Welcome to <%= title %></p>
+<header class="header">
+    <h1>Node.js Link Checker</h1>
+</header>
+
+<div class="content">
+    <!--div class="input-group">
+        <input type="text" class="url-input" placeholder="URL">
+        <button class="url-btn">Submit</button>
+    </div-->
+
+
+    <table class="url-list-table">
+        <thead class="url-list-thead">
+            <tr>
+                <th>#</th>
+                <th class="url-th">URL</th>
+                <th>Progress</th>
+                <th>Status code</th>
+            </tr>
+        </thead>
+        <tbody class="url-list-body">
+            <tr>
+                <td>#</td>
+                <td>URL</td>
+                <td>Progress</td>
+                <td>Status code</td>
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>URL</td>
+                <td>Progress</td>
+                <td>Status code</td>
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>URL</td>
+                <td>Progress</td>
+                <td>Status code</td>
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>URL</td>
+                <td>Progress</td>
+                <td>Status code</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
 <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+<script src="/javascripts/libs/react.js"></script>
+<script src="/javascripts/libs/JSXTransformer.js"></script>
 <script src="/javascripts/app/app.js"></script>
 </body>
 </html>
