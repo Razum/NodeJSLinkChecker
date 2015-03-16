@@ -1,10 +1,6 @@
-var socket = io('http://localhost:3000');
-socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-});
+//var Child = require("./components/TestView.jsx");
+//React.render((<Child name="Alex" />), document.getElementById('content'));
 
-socket.emit('startscraping', {url: 'http://onu.edu.ua/'})
-socket.on('urls', function (data) {
-    console.log(data);
-})
+
+var UrlCheckForm = require("./components/UrlCheckForm.jsx");
+React.render((<UrlCheckForm />), document.getElementById('content'));

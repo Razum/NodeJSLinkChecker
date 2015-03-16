@@ -18,5 +18,13 @@
         "cheerio": "0.18.0",
         "request": "2.53.0"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "gulp": "3.8.11",
+        "browserify": "9.0.3",
+        "watchify": "2.4.0",
+        "reactify": "1.0.0",
+        "gulp-util": "3.0.4",
+        "vinyl-source-stream": "1.1.0",
+        "gulp-notify": "2.2.0"
+    }
 }

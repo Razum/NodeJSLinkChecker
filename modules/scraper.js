@@ -33,7 +33,7 @@ module.exports = (function () {
                         hrefs[i] = href;
 
                     });
-                    urls = hrefs.filter(function (href) {
+                    urlsArr = hrefs.filter(function (href) {
                         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                         var re_mailto = /mailto/g;
                         if (!href || re_mailto.test(href) || re.test(href) || href.replace(/\s/g, '') == '' || href.replace(/\s/g, '')=='#') {
@@ -42,11 +42,31 @@ module.exports = (function () {
                         return href
                     });
 
-                    console.log(urls)
+                    urls = urlsArr.map(function (url, ind) {
+                        return {id: ind, url: url, status: 0, progress: 0}
+                    });
                     active_socket.emit('urls', {urls: urls})
 
                 }
             });
+        },
+        checkURL: function (id) {
+            console.log(id)
+            for (var i = urls.length; i--;) {
+                if (urls[i].id == id) {
+                    var url = urls[i];
+                    request(urls[i].url, function (err, response, body) {
+                        if (!err) {
+                            url.progress = 2;
+                            url.status = response.statusCode
+                            active_socket.emit('updateUrls', url);
+                        }
+
+                    });
+                    break;
+                }
+            }
+
         }
     }
 

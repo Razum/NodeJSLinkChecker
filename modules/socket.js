@@ -8,13 +8,18 @@ module.exports = function (server) {
     io.on('connection', function (socket) {
         var scraper = require('./scraper');
         scraper.setSocket(socket);
-        socket.emit('news', { hello: 'world' });
-
 
         socket.on('startscraping', function (data) {
-            console.log(data);
             scraper.setUrl(data.url);
             scraper.scrapForURLs()
         });
+
+        socket.on('checkURL', function (data) {
+
+            console.log('checkURL server', data)
+
+            scraper.checkURL(data[0].id)
+        });
+
     });
 }
