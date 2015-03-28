@@ -14,12 +14,12 @@ module.exports = function (server) {
             scraper.scrapForURLs()
         });
 
-        socket.on('checkURL', function (data) {
+        socket.on('checkURLs', function (data) {
 
             console.log('checkURL server', data)
 
-            scraper.checkURL(data[0].id)
+            scraper.checkURLs(data[0].id)
         });
 
     });
-}
+};

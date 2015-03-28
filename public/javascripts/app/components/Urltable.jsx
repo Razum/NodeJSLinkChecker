@@ -4,7 +4,7 @@ var UrlTable = React.createClass({
     render: function () {
         var self = this;
         var rows = this.props.urls.map(function (url, i) {
-            return <UrlRow url={url} key={i} checkURL={self.props.checkURL}/>
+            return <UrlRow url={url} key={i}/>
         });
 
         return (

@@ -50,18 +50,28 @@ module.exports = (function () {
                 }
             });
         },
-        checkURL: function (id) {
+
+        //progress
+        // 2 - success
+        // 1 - loading
+        // 0 - not active
+        // 3 - failed
+
+        checkURLs: function (id) {
             console.log(id)
             for (var i = urls.length; i--;) {
                 if (urls[i].id == id) {
                     var url = urls[i];
-                    request(urls[i].url, function (err, response, body) {
+                    request({url: urls[i].url, timeout: 5000}, function (err, response, body) {
                         if (!err) {
                             url.progress = 2;
-                            url.status = response.statusCode
+                            url.status = response.statusCode;
                             active_socket.emit('updateUrls', url);
+                            return;
                         }
-
+                        url.progress = 3;
+                        url.status = 3;
+                        active_socket.emit('updateUrls', url);
                     });
                     break;
                 }

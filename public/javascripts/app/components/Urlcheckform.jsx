@@ -1,51 +1,34 @@
-
-var socket = require('../socket.js');
+var LCStore = require('../stores/lc-store');
+var LCActions = require('../actions/lc-actions');
+var LCWatchMixin = require('../mixins/LCWatchMixin');
 
 var UrlInput = require("./UrlInput.jsx");
 var UrlTable = require("./UrlTable.jsx");
 
 var UrlCheckForm = React.createClass({
+    mixins: [LCWatchMixin],
     getInitialState: function () {
         return {
-            showTable: false,
-            urls: []
+            showTable: false
         }
     },
-    componentDidMount: function() {
-    var self = this;
-        socket.on('urls', function (data) {
-            self.setState({urls: data.urls})
-        });
-
-
-        socket.on('updateUrls', function (data) {
-            var urls = self.state.urls.slice();
-
-            for (var i = 0; i < urls.length; i++) {
-                if (urls[i].id == data.id) {
-                    urls[i] = data;
-                    break;
-                }
-
-            }
-
-            self.setState({urls: urls});
-console.log(self.state.urls);
-        });
+    _onChange: function () {
+        console.log("ON_CHANGE");
+        this.setState({urls: LCStore.getURLs()})
     },
+
     onURLSubmit: function (e) {
         e.preventDefault();
-        console.warn("Update!");
-        this.setState({ showTable: true });
-        socket.emit('startscraping', {url: 'http://onu.edu.ua/'});
+        this.setState({showTable: true});
+        LCActions.startScrapingURLs("http://onu.edu.ua");
     },
 
-    checkURL: function (ids) {
-        socket.emit('checkURL', ids || []);
+    checkURLs: function (ids) {
+        LCActions.checkURLs(ids || []);
     },
 
     render: function () {
-        var comp = !this.state.showTable ? <UrlInput onURLSubmit={this.onURLSubmit} /> : <UrlTable urls={this.state.urls} checkURL={this.checkURL} />;
+        var comp = !this.state.showTable ? <UrlInput onURLSubmit={this.onURLSubmit} /> : <UrlTable urls={this.state.urls}/>;
         return (
             <div>
                 {comp}
