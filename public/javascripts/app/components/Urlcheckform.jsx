@@ -17,8 +17,7 @@ var UrlCheckForm = React.createClass({
         this.setState({urls: LCStore.getURLs()})
     },
 
-    onURLSubmit: function (e) {
-        e.preventDefault();
+    onURLSubmit: function (url) {
         this.setState({showTable: true});
         LCActions.startScrapingURLs("http://onu.edu.ua");
     },

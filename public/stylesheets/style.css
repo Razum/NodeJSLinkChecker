@@ -269,3 +269,13 @@ body {
 .url-list-body tr:nth-child(2n) {
   background: #e2ebf2;
 }
+.error-block {
+  visibility: hidden;
+  color: #de4756;
+  font-size: 14px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+}
+.error {
+  visibility: visible;
+}

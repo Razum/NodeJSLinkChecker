@@ -18,7 +18,8 @@
         "cheerio": "0.18.0",
         "request": "2.54.0",
         "object-assign": "2.0.0",
-        "es6-promise": "2.0.1"
+        "es6-promise": "2.0.1",
+        "classnames": "1.2.0"
     },
     "devDependencies": {
         "gulp": "3.8.11",
